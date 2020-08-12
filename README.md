@@ -24,7 +24,7 @@ OSS C++版SDK提供了OSS丰富的接口，可以轻松的进行Bucket、Object�
 msbuild ALL_BUILD.vcxproj
 msbuild INSTALL.vcxproj
 ```
-或直接用Visual Studio打开，生成及决方案。
+或直接用Visual Studio打开，生成解决方案。
 
 ## 二、Linux系统
 
