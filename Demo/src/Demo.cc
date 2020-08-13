@@ -7,35 +7,27 @@ using namespace InspurCloud::OSS;
 
 int main(void)
 {
-	/*³õÊ¼»¯OSSÕËºÅĞÅÏ¢*/
-	/*std::string AccessKeyId = "LTAI4FjsuptZkC4h7X3Vp13S";
-	std::string AccessKeySecret = "tvThQucHentwtyC21J26mAitqAhUqM";
-	std::string Endpoint = "oss-cn-shanghai.aliyuncs.com";
-	std::string BucketName = "tong-image3";*/
+	/*åˆå§‹åŒ–OSSè´¦å·ä¿¡æ¯*/
 
-	std::string AccessKeyId = "inspur-zhangsm-oss";
-	std::string AccessKeySecret = "inspur-zhangsm-oss";
-	std::string Endpoint = "10.221.128.9";
-	std::string BucketName = "sm-bucket00000";
+	std::string AccessKeyId = "AccessKeyId";
+	std::string AccessKeySecret = "AccessKeySecret";
+	std::string Endpoint = "Endpoint";
+	std::string BucketName = "bucketname";
 
-
-	/*³õÊ¼»¯ÍøÂçµÈ×ÊÔ´*/
+	/*åˆå§‹åŒ–ç½‘ç»œç­‰èµ„æº*/
 	InitializeSdk();
 
 	ClientConfiguration conf;
 	OssClient client(Endpoint, AccessKeyId, AccessKeySecret, conf);
 
-	/*Ö¸¶¨ĞÂ´´½¨bucketµÄÃû³Æ¡¢´æ´¢ÀàĞÍºÍACL*/
+	/*æŒ‡å®šæ–°åˆ›å»ºbucketçš„åç§°ã€å­˜å‚¨ç±»å‹å’ŒACL*/
 	CreateBucketRequest request(BucketName, StorageClass::IA, CannedAccessControlList::PublicReadWrite);
-	/*ÉèÖÃÍ¬³ÇÈßÓà´æ´¢ÊôĞÔ*/
 	request.SetRegion("cn-north-3");
-	//request.setDataRedundancyType(DataRedundancyType::ZRS);
-
-	/*´´½¨bucket*/
+	/*åˆ›å»ºbucket*/
 	auto outcome = client.CreateBucket(request);
 
 	if (!outcome.isSuccess()) {
-		/* Òì³£´¦Àí */
+		/* å¼‚å¸¸å¤„ç† */
 		std::cout << "CreateBucket fail" <<
 			",code:" << outcome.error().Code() <<
 			",message:" << outcome.error().Message() <<
@@ -44,7 +36,7 @@ int main(void)
 		return -1;
 	}
 
-	/*ÊÍ·ÅÍøÂçµÈ×ÊÔ´*/
+	/*é‡Šæ”¾ç½‘ç»œç­‰èµ„æº*/
 	ShutdownSdk();
 	return 0;
 }
